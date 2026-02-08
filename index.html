@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Productivity Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app" id="app">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <p class="eyebrow">Personal Productivity Tracker</p>
+            <h1>Make your day visible.</h1>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button class="ghost" id="sampleDay">Load Sample Day</button>
+          <button class="solid" id="newDay">New Day</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <p class="stat-label">Focus Score</p>
+          <p class="stat-value" id="focusScore">0</p>
+          <p class="stat-help" id="focusHelp">Plan tasks to calculate.</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Deep Work</p>
+          <p class="stat-value" id="deepWork">0h</p>
+          <p class="stat-help">Time blocked for focused work.</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Recovery</p>
+          <p class="stat-value" id="recovery">0h</p>
+          <p class="stat-help">Breaks and recharge time.</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Intentions</p>
+          <p class="stat-value" id="intentions">0</p>
+          <p class="stat-help">Tasks committed for today.</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="layout">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Daily Intentions</h2>
+          <p>Create tasks with energy and priority. Track progress as you go.</p>
+        </div>
+        <form id="taskForm" class="task-form">
+          <div class="field">
+            <label for="taskTitle">Task</label>
+            <input id="taskTitle" name="taskTitle" type="text" placeholder="Write the project proposal" required />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="taskDuration">Minutes</label>
+              <input id="taskDuration" name="taskDuration" type="number" min="10" step="5" value="45" required />
+            </div>
+            <div class="field">
+              <label for="taskEnergy">Energy</label>
+              <select id="taskEnergy" name="taskEnergy">
+                <option value="high">High focus</option>
+                <option value="medium" selected>Medium</option>
+                <option value="low">Light</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="taskPriority">Priority</label>
+              <select id="taskPriority" name="taskPriority">
+                <option value="1">1 - Critical</option>
+                <option value="2" selected>2 - Important</option>
+                <option value="3">3 - Normal</option>
+              </select>
+            </div>
+          </div>
+          <button class="solid" type="submit">Add Task</button>
+        </form>
+
+        <div class="task-list" id="taskList"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Time Blocks</h2>
+          <p>Sketch your day to balance focus and recovery.</p>
+        </div>
+        <form id="blockForm" class="task-form">
+          <div class="field">
+            <label for="blockTitle">Block</label>
+            <input id="blockTitle" name="blockTitle" type="text" placeholder="Deep work sprint" required />
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="blockDuration">Minutes</label>
+              <input id="blockDuration" name="blockDuration" type="number" min="10" step="5" value="60" required />
+            </div>
+            <div class="field">
+              <label for="blockType">Type</label>
+              <select id="blockType" name="blockType">
+                <option value="focus" selected>Focus</option>
+                <option value="meeting">Meeting</option>
+                <option value="recovery">Recovery</option>
+              </select>
+            </div>
+          </div>
+          <button class="solid" type="submit">Add Block</button>
+        </form>
+
+        <div class="timeline" id="timeline"></div>
+      </section>
+    </section>
+
+    <section class="panel insights">
+      <div class="panel-header">
+        <h2>Daily Reflection</h2>
+        <p>Capture context so tomorrow gets better.</p>
+      </div>
+      <div class="reflection">
+        <div>
+          <label for="wins">Wins</label>
+          <textarea id="wins" placeholder="What moved forward?" rows="4"></textarea>
+        </div>
+        <div>
+          <label for="stuck">Stuck Points</label>
+          <textarea id="stuck" placeholder="What slowed you down?" rows="4"></textarea>
+        </div>
+        <div>
+          <label for="next">Next Move</label>
+          <textarea id="next" placeholder="What will you do first tomorrow?" rows="4"></textarea>
+        </div>
+      </div>
+      <div class="reflection-actions">
+        <button class="ghost" id="saveReflection">Save Reflection</button>
+        <p class="saved" id="saveStatus">Not saved yet.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
